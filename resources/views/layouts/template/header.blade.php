@@ -15,14 +15,14 @@
                 <!-- <a href="{{route('home')}}"> -->
                     <b class="logo-icon">
                         <!-- Dark Logo icon -->
-                        <!-- <img src="{{asset('images/logo-icon.png')}}" alt="homepage" class="dark-logo" /> -->
+                        <img src="{{asset('images/logo.jpg')}}" width='60%' alt="homepage" class="dark-logo" />
                         <!-- Light Logo icon -->
                         <!-- <img src="{{asset('images/logo-icon.png')}}" alt="homepage" class="light-logo" /> -->
                     </b>
                     <!--End Logo icon -->
                     <!-- Logo text -->
                     <span class="logo-text">
-                        <strong>Toko Maestro</strong>
+                        <!-- <strong>Toko Maestro</strong> -->
                         
                         <!-- dark Logo text -->
                         <!-- <img src="{{asset('images/logo-text.png')}}" alt="homepage" class="dark-logo" /> -->

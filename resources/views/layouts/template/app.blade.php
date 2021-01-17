@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('images/favicon.png')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('images/favicon-32x32.png')}}">
     <title>@yield('title')</title>
     <!-- Custom CSS -->
     <link href="{{ asset('extra-libs/c3/c3.min.css') }}" rel="stylesheet">
