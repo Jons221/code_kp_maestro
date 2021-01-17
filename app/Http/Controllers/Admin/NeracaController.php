@@ -118,6 +118,14 @@ class NeracaController extends Controller
             ->sum(DB::raw('debit - credit'));
         $TotalBunga =$interest ;
 
+        $retained_earn = DB::table('jurnal_lines')
+            ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
+            ->where('akun_id', 58)
+            ->whereMonth('jurnals.transaction_date', $month)
+            ->whereYear('jurnals.transaction_date', $year)
+            ->sum(DB::raw('debit - credit'));
+        $retained_earn_total =$retained_earn;
+
         // purcahse
         // $purchase = JurnalDetail::where('akun_id', 5)
         //     ->whereMonth('created_at', $month)
@@ -145,6 +153,22 @@ class NeracaController extends Controller
             ->sum(DB::raw('debit - credit'));
         $TotalBank =$bank;
 
+        $prepaid_rent = DB::table('jurnal_lines')
+            ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
+            ->where('akun_id', 8)
+            ->whereMonth('jurnals.transaction_date', $month)
+            ->whereYear('jurnals.transaction_date', $year)
+            ->sum(DB::raw('debit - credit'));
+        $prepaid_rent_total =$prepaid_rent;
+
+        $note_reciev = DB::table('jurnal_lines')
+            ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
+            ->where('akun_id', 6)
+            ->whereMonth('jurnals.transaction_date', $month)
+            ->whereYear('jurnals.transaction_date', $year)
+            ->sum(DB::raw('debit - credit'));
+        $note_reciev_total =$note_reciev; 
+
         // perlekapan = Machine
         // $perlekapan = JurnalDetail::where('akun_id', 14)
         //     ->whereMonth('created_at', $month)
@@ -153,7 +177,7 @@ class NeracaController extends Controller
 
         $perlekapan = DB::table('jurnal_lines')
             ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
-            ->where('akun_id', 14)
+            ->where('akun_id', 7)
             ->whereMonth('jurnals.transaction_date', $month)
             ->whereYear('jurnals.transaction_date', $year)
             ->sum(DB::raw('debit - credit'));
@@ -249,8 +273,8 @@ class NeracaController extends Controller
         // count all neraca
         $TotalAmountBulding = $TotalBulding-$DepBulding;
         $TotalAmountEquiptment = $TotalEquipment-$TotalDepEquip;
-        $TotalIn=$TotalKas+$TotalAR+$TotalPerlekapan+$TotalLand+$TotalAmountBulding+$TotalAmountEquiptment;
-        $TotalOut=$TotalAP+$TotalBunga+$TotalBank+$TotalCapital;
+        $TotalIn=$TotalKas+$TotalAR+$TotalPerlekapan+$TotalLand+$TotalAmountBulding+$TotalAmountEquiptment+$prepaid_rent_total+$note_reciev_total;
+        $TotalOut=$TotalAP+$TotalBunga+$TotalBank+$TotalCapital+$retained_earn_total;
         // $totalPendapatan = $salesTotal - ($salesDiscountTotal + $salesReturTotal);
         // $totalLabaKotor = $totalPendapatan - $purchaseTotal;
         // $totalBebanOperasional = $equipmentTotal + $freightOutTotal + $otherSalesTotal + $salaryTotal + $buildingExpenseTotal + $otherExpenseTotal + $administrationExpenseTotal;
@@ -263,6 +287,9 @@ class NeracaController extends Controller
                 'TotalKas' => $TotalKas,
                 'TotalAP' => $TotalAP,
                 'TotalAR' => $TotalAR,
+                'prepaid_rent_total'=>$prepaid_rent_total,
+                'note_reciev_total'=>$note_reciev_total,
+                'retained_earn_total'=>$retained_earn_total,
                 'TotalBunga' => $TotalBunga,
                 'TotalPurcahse' => $TotalPurcahse,
                 'TotalBank' => $TotalBank,
