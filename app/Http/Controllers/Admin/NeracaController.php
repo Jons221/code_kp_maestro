@@ -76,7 +76,7 @@ class NeracaController extends Controller
             ->where('akun_id', 3)
             ->whereMonth('jurnals.transaction_date', $month)
             ->whereYear('jurnals.transaction_date', $year)
-            ->sum(DB::raw('debit'));
+            ->sum(DB::raw('debit-credit'));
         $TotalKas =$cash;
         
         //total ap
@@ -89,7 +89,7 @@ class NeracaController extends Controller
             ->where('akun_id', 21)
             ->whereMonth('jurnals.transaction_date', $month)
             ->whereYear('jurnals.transaction_date', $year)
-            ->sum(DB::raw('credit'));
+            ->sum(DB::raw('credit-debit'));
         $TotalAP =$payable;
 
         // total ar
@@ -102,7 +102,7 @@ class NeracaController extends Controller
             ->where('akun_id', 4)
             ->whereMonth('jurnals.transaction_date', $month)
             ->whereYear('jurnals.transaction_date', $year)
-            ->sum(DB::raw('debit'));
+            ->sum(DB::raw('debit-credit'));
         $TotalAR =$receivable;
 
         // interest 
