@@ -46,7 +46,7 @@ class AkunSeeder extends Seeder
             ],
             [
                 'code' => '1.1.6',
-                'name' => 'Prepaid Expenses',
+                'name' => 'Prepaid Rent',
             ],
             [
                 'code' => '1.2',
@@ -239,6 +239,10 @@ class AkunSeeder extends Seeder
             [
                 'code' => '7.2.1',
                 'name' => 'Income Tax',
+            ],
+            [
+                'code' => '8',
+                'name' => 'Retained Earning',
             ],
         ];
         foreach ($akuns as $akun) {
