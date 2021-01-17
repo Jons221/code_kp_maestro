@@ -97,6 +97,14 @@ class LabaRugiController extends Controller
             ->whereYear('jurnals.transaction_date', $year)
             ->sum(DB::raw('debit - credit'));
         $salaryTotal =$salary;
+
+        $insureance_exp = DB::table('jurnal_lines')
+            ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
+            ->where('akun_id', 49)
+            ->whereMonth('jurnals.transaction_date', $month)
+            ->whereYear('jurnals.transaction_date', $year)
+            ->sum(DB::raw('debit - credit'));
+        $insureance_exp_total =$insureance_exp;
         
         // Building
         // $bulding_expense = JurnalDetail::where('akun_id', 16)
@@ -168,7 +176,7 @@ class LabaRugiController extends Controller
         // count all laba dan rugi
         $totalPendapatan = $salesTotal;
         $totalLabaKotor = $totalPendapatan - $purchaseTotal;
-        $AllExpense = $salaryTotal+$buildingExpenseTotal+$AdvExpense+$EquipExpense+$DepEquip+$OtherExpenses;
+        $AllExpense = $salaryTotal+$insureance_exp_total+$buildingExpenseTotal+$AdvExpense+$EquipExpense+$DepEquip+$OtherExpenses;
         $totalLabaBersih =$totalLabaKotor-$AllExpense;
         // LabaRugi::create([
         //     'laba_rugi' => $totalLabaBersihOperasional,
@@ -177,6 +185,7 @@ class LabaRugiController extends Controller
         $pdf = PDF::loadview('laba-rugi.laporan',
             [
                 'totalPendapatan' => $totalPendapatan,
+                'insureance_exp_total'=>$insureance_exp_total,
                 'salesTotal' => $salesTotal,
                 'AdvExpense' => $AdvExpense,
                 'EquipExpense' => $EquipExpense,
