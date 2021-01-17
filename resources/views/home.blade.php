@@ -103,7 +103,7 @@
                 <div class="card border-right">
                     <div class="card-body">
                         <h4 class="card-title">Invoices Purchase</h4>
-                        <div id="campaign-v2" class="mt-2" style="height:283px; width:100%;"></div>
+                        <div id="campaign-v3" class="mt-2" style="height:283px; width:100%;"></div>
                         <ul class="list-style-none mb-0">
                             <li>
                                 <i class="fas fa-circle text-primary font-10 mr-2"></i>
@@ -181,4 +181,116 @@
     <script src="{{ asset('extra-libs/jvector/jquery-jvectormap-2.0.2.min.js')}}"></script>
     <script src="{{ asset('extra-libs/jvector/jquery-jvectormap-world-mill-en.js')}}"></script>
     <script src="{{ asset('dist/js/pages/dashboards/dashboard1.min.js')}}"></script>
+    <script>
+        $(function () {
+
+        // ==============================================================
+        // Campaign
+        // ==============================================================
+        var chart1 = c3.generate({
+            bindto: '#campaign-v2',
+            data: {
+                columns: [
+                    ['Done', {{$sales_done}}],
+                    ['Confirm', {{$sales_confirm}}],
+                    ['Draft', {{$sales_draft}}],
+                ],
+
+                type: 'donut',
+                tooltip: {
+                    show: true
+                }
+            },
+            donut: {
+                label: {
+                    show: false
+                },
+                title: 'Sales',
+                width: 18
+            },
+
+            legend: {
+                hide: true
+            },
+            color: {
+                pattern: [
+                    'blue',
+                    'red',
+                    'cyan',
+                ]
+            }
+        });
+
+        d3.select('#campaign-v3 .c3-chart-arcs-title').style('font-family', 'Rubik');
+
+        var chart1 = c3.generate({
+            bindto: '#campaign-v3',
+            data: {
+                columns: [
+                    ['Done', {{$purchase_done}}],
+                    ['Confirm', {{$purchase_confirm}}],
+                    ['Draft', {{$purchase_draft}}],
+                ],
+
+                type: 'donut',
+                tooltip: {
+                    show: true
+                }
+            },
+            donut: {
+                label: {
+                    show: false
+                },
+                title: 'Purchase',
+                width: 18
+            },
+
+            legend: {
+                hide: true
+            },
+            color: {
+                pattern: [
+                    'blue',
+                    'red',
+                    'cyan',
+                ]
+            }
+        });
+
+        d3.select('#campaign-v3 .c3-chart-arcs-title').style('font-family', 'Rubik');
+
+      
+
+        // Offset x1 a tiny amount so that the straight stroke gets a bounding box
+        chart.on('draw', function (ctx) {
+            if (ctx.type === 'area') {
+                ctx.element.attr({
+                    x1: ctx.x1 + 0.001
+                });
+            }
+        });
+
+        // Create the gradient definition on created event (always after chart re-render)
+        chart.on('created', function (ctx) {
+            var defs = ctx.svg.elem('defs');
+            defs.elem('linearGradient', {
+                id: 'gradient',
+                x1: 0,
+                y1: 1,
+                x2: 0,
+                y2: 0
+            }).elem('stop', {
+                offset: 0,
+                'stop-color': 'rgba(255, 255, 255, 1)'
+            }).parent().elem('stop', {
+                offset: 1,
+                'stop-color': 'rgba(80, 153, 255, 1)'
+            });
+        });
+
+        $(window).on('resize', function () {
+            chart.update();
+        });
+        })
+    </script>
     @endsection
