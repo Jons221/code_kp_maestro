@@ -51,24 +51,25 @@
 </style>
 
 <body>
+    <h1 class="text-center">Maestro Jaya</h1>
     <h1 class="text-center">Laporan Laba Rugi</h1>
     <h3 class="text-center">Bulan dan Tahun {{$reportMonthYear}}</h3>
     <br/>
     <br/>
     <table class="table" width="100%">
-        <tr class="table-header">
+        <!-- <tr class="table-header">
             <th></th>
             <th>Credit</th>
             <th>Debit</th>
             <th>Total</th>
-        </tr>
+        </tr> -->
         <tr>
-            <td>
+            <td width="25%">
                 <p>Pendapatan</p>
             </td>
-            <td></td>
-            <td class="text-center">{{$totalPendapatan}}</td>
-            <td class="text-center"></td>
+            <td width="25%"></td>
+            <td width="25%" class="text-center">{{$totalPendapatan}}</td>
+            <td width="25%" class="text-center"></td>
         </tr>
         <tr>
             <td>
@@ -99,6 +100,14 @@
                 <p>Beban Gaji</p>
             </td>
             <td class="text-center">{{$salaryTotal}}</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                <p>Beban asuransi</p>
+            </td>
+            <td class="text-center">{{$insureance_exp_total}}</td>
             <td></td>
             <td></td>
         </tr>

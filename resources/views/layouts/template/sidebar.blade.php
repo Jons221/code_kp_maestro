@@ -59,7 +59,12 @@
                             class="hide-menu">Neraca
                               </span></a>
                       </li>
-                      <li class="sidebar-item"> <a class="sidebar-link" href="{{route('penjualan.index')}}"
+                      <li class="sidebar-item"> <a class="sidebar-link" href="{{route('perubahan_modal.index')}}"
+                        aria-expanded="false"><i data-feather="bookmark" class="feather-icon"></i><span
+                            class="hide-menu">Laporan Perubahan Modal
+                              </span></a>
+                      </li>
+                      <!-- <li class="sidebar-item"> <a class="sidebar-link" href="{{route('penjualan.index')}}"
                         aria-expanded="false"><i data-feather="bookmark" class="feather-icon"></i><span
                             class="hide-menu">Laporan Penjualan
                               </span></a>
@@ -78,7 +83,7 @@
                         aria-expanded="false"><i data-feather="bookmark" class="feather-icon"></i><span
                             class="hide-menu">Laporan Pengeluaran kas
                               </span></a>
-                      </li>
+                      </li> -->
                   </ul>
               </nav>
               <!-- End Sidebar navigation -->

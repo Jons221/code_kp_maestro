@@ -66,6 +66,9 @@ Route::middleware(['auth'])->group(function () {
   Route::get('neraca', 'App\Http\Controllers\Admin\NeracaController@index')->name('neraca.index');
   Route::post('neraca', 'App\Http\Controllers\Admin\NeracaController@print')->name('neraca.print');
 
+  Route::get('perubahan_modal', 'App\Http\Controllers\Admin\Perubahan_ModalController@index')->name('perubahan_modal.index');
+  Route::post('perubahan_modal', 'App\Http\Controllers\Admin\Perubahan_ModalController@print')->name('perubahan_modal.print');
+
   Route::get('penjualan', 'App\Http\Controllers\Admin\PenjualanController@index')->name('penjualan.index');
   Route::post('penjualan', 'App\Http\Controllers\Admin\PenjualanController@print')->name('penjualan.print');
 

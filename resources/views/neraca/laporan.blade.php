@@ -51,15 +51,16 @@
 </style>
 
 <body>
+    <h1 class="text-center">Maestro Jaya</h1>
     <h1 class="text-center">Laporan Neraca</h1>
     <h3 class="text-center">Bulan dan Tahun {{$reportMonthYear}}</h3>
     <br/>
     <br/>
     <table class="table" width="100%">
         <tr class="table-header">
-            <th>Nama Rekening</th>
+            <th>Nama Akun</th>
             <th>Jumlah</th>
-            <th>Nama Rekening</th>
+            <th>Nama Akun</th>
             <th>Jumlah</th>
         </tr>
         <tr>
@@ -67,7 +68,7 @@
                 <p>Kas</p>
             </td>
             <td class="text-center">{{$TotalKas}}</td>
-            <td >Utang usah</td>
+            <td >Utang usaha</td>
             <td class="text-center">{{$TotalAP}}</td>
         </tr>
         <tr>
@@ -80,7 +81,7 @@
         </tr>
         <tr>
             <td>
-                <p>Persedian barang dagangan</p>
+                <p>Sewa dibayar muka</p>
             </td>
             <td class="text-center">{{$TotalPurcahse}}</td>
             <td>Utang Bank</td>
@@ -89,11 +90,19 @@
         </tr>
         <tr>
             <td>
-                <p>Perlengkapan</p>
+                <p>Asuransi dibayar dimuka</p>
             </td>
-            <td class="text-center">{{$TotalPerlekapan}}</td>
+            <td class="text-center">{{$prepaid_rent_total}}</td>
             <td>Modal</td>
             <td class="text-center">{{$TotalCapital}}</td>
+        </tr>
+        <tr>
+            <td>
+                <p>Perlengkapan</p>
+            </td>
+            <td class="text-center">{{$note_reciev_total}}</td>
+            <td>Laba ditahan</td>
+            <td>{{$retained_earn_total}}</td>
         </tr>
         <tr>
             <td>
@@ -129,7 +138,7 @@
         </tr>
         <tr>
             <td>
-                <p >Perlatan ({{$TotalEquipment}})</p>
+                <p >Peralatan ({{$TotalEquipment}})</p>
             </td>
             <td class="text-center"></td>
             <td></td>
