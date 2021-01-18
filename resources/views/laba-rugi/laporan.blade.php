@@ -153,6 +153,22 @@
         </tr>
         <tr>
             <td>
+                <p>Beban Perawatan</p>
+            </td>
+            <td class="text-center">{{$MaintenanceExpenses}}</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                <p>Beban listrik dan air</p>
+            </td>
+            <td class="text-center">{{$ElectricWaterExpenses}}</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
                 <p style="margin-left:20mm">Total-beban</p>
             </td>
             <td></td>

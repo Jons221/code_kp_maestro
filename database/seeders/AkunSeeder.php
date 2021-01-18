@@ -244,6 +244,14 @@ class AkunSeeder extends Seeder
                 'code' => '8',
                 'name' => 'Retained Earning',
             ],
+            [
+                'code' => '9',
+                'name' => 'Maintenance Expense',
+            ],
+            [
+                'code' => '10',
+                'name' => 'Electric and water expense',
+            ],
         ];
         foreach ($akuns as $akun) {
             Akun::create($akun);
