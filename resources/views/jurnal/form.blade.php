@@ -264,17 +264,11 @@
 
 			
 			if(data !== null && data.akun !== null) {
+				let option = new Option(data.akun.name, data.akun.id, false, false);
 				oldRow.find("select.select2").append(
-						new Option(
-							data.akun.name,
-							data.akun.id,
-							false,
-							false,
-						)
+						option
 					)
 				.trigger('change');
-				// newRow.find("td:nth-child(4)").append("# "+data);
-				// console.log("have data, will need to update rows", data);
 			}
 			if(data !== null && data.description) {
 				oldRow.find("td:nth-child(3) input").val(data.description);
