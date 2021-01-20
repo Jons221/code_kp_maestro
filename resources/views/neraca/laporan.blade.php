@@ -52,9 +52,8 @@
 
 <body>
     <h1 class="text-center">Maestro Jaya</h1>
-    <h1 class="text-center">Laporan Neraca</h1>
+    <h2 class="text-center">Laporan Neraca</h2>
     <h3 class="text-center">Bulan dan Tahun {{$reportMonthYear}}</h3>
-    <br/>
     <br/>
     <table class="table" width="100%">
         <tr class="table-header">
@@ -102,13 +101,29 @@
             </td>
             <td class="text-center">{{$note_reciev_total}}</td>
             <td>Laba ditahan</td>
-            <td>{{$retained_earn_total}}</td>
+            <td class="text-center">{{$retained_earn_total}}</td>
         </tr>
         <tr>
             <td>
-                <p>Tanah</p>
+                <p>Kendaraan ({{$Totalvehicle}})</p>
             </td>
-            <td class="text-center">{{$TotalLand}}</td>
+            <td class="text-center"></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                <p>Akun Depr. Kendaraan ({{$Totaldepvehicle}})</p>
+            </td>
+            <td class="text-center"></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                <p></p>
+            </td>
+            <td class="text-center">{{$TotalAmountvehicle}}</td>
             <td></td>
             <td></td>
         </tr>
@@ -146,9 +161,9 @@
         </tr>
         <tr>
             <td>
-                <p>Akun Depr. Perlatan</p>
+                <p>Akun Depr. Perlatan ({{$TotalDepEquip}})</p>
             </td>
-            <td class="text-center">{{$TotalDepEquip}}</td>
+            <td class="text-center"></td>
             <td></td>
             <td></td>
         </tr>

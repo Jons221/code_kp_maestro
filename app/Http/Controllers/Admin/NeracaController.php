@@ -209,6 +209,22 @@ class NeracaController extends Controller
             ->sum(DB::raw('debit - credit'));
         $TotalLand =$land;
 
+        $vehicle = DB::table('jurnal_lines')
+            ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
+            ->where('akun_id', 12)
+            ->whereMonth('jurnals.transaction_date', $month)
+            ->whereYear('jurnals.transaction_date', $year)
+            ->sum(DB::raw('debit - credit'));
+        $Totalvehicle =$vehicle;
+
+        $dep_vehicle = DB::table('jurnal_lines')
+            ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
+            ->where('akun_id', 13)
+            ->whereMonth('jurnals.transaction_date', $month)
+            ->whereYear('jurnals.transaction_date', $year)
+            ->sum(DB::raw('debit - credit'));
+        $Totaldepvehicle =$dep_vehicle;
+
         // building
         // $building = JurnalDetail::where('akun_id', 16)
         //     ->whereMonth('created_at', $month)
@@ -272,8 +288,9 @@ class NeracaController extends Controller
 
         // count all neraca
         $TotalAmountBulding = $TotalBulding-$DepBulding;
+        $TotalAmountvehicle = $Totalvehicle+$Totaldepvehicle;
         $TotalAmountEquiptment = $TotalEquipment-$TotalDepEquip;
-        $TotalIn=$TotalKas+$TotalAR+$TotalPerlekapan+$TotalLand+$TotalAmountBulding+$TotalAmountEquiptment+$prepaid_rent_total+$note_reciev_total;
+        $TotalIn=$TotalKas+$TotalAR+$TotalPerlekapan+$TotalLand+$TotalAmountBulding+$TotalAmountEquiptment+$prepaid_rent_total+$note_reciev_total+$TotalAmountvehicle;
         $TotalOut=$TotalAP+$TotalBunga+$TotalBank+$TotalCapital+$retained_earn_total;
         // $totalPendapatan = $salesTotal - ($salesDiscountTotal + $salesReturTotal);
         // $totalLabaKotor = $totalPendapatan - $purchaseTotal;
@@ -296,6 +313,9 @@ class NeracaController extends Controller
                 'TotalPerlekapan' => $TotalPerlekapan,
                 'TotalCapital' => $TotalCapital,
                 'TotalLand' => $TotalLand,
+                'Totalvehicle'=> $Totalvehicle,
+                'Totaldepvehicle'=>$Totaldepvehicle,
+                'TotalAmountvehicle'=>$TotalAmountvehicle,
                 'TotalBulding' => $TotalBulding,
                 'DepBulding' => $DepBulding,
                 'TotalEquipment' => $TotalEquipment,
