@@ -113,7 +113,7 @@ class LabaRugiController extends Controller
         //     ->sum(DB::raw('debit - credit'));
         $bulding_expense = DB::table('jurnal_lines')
             ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
-            ->where('akun_id', 16)
+            ->where('akun_id', 48)
             ->whereMonth('jurnals.transaction_date', $month)
             ->whereYear('jurnals.transaction_date', $year)
             ->sum(DB::raw('debit - credit'));

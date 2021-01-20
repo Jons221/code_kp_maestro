@@ -52,10 +52,8 @@
 
 <body>
     <h1 class="text-center">Maestro Jaya</h1>
-    <h1 class="text-center">Laporan Laba Rugi</h1>
+    <h3 class="text-center">Laporan Laba Rugi</h3>
     <h3 class="text-center">Bulan dan Tahun {{$reportMonthYear}}</h3>
-    <br/>
-    <br/>
     <table class="table" width="100%">
         <!-- <tr class="table-header">
             <th></th>
