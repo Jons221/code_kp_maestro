@@ -105,73 +105,49 @@
         </tr>
         <tr>
             <td>
-                <p>Kendaraan ({{$Totalvehicle}})</p>
+                <p>Kendaraan </p>
             </td>
-            <td class="text-center"></td>
+            <td class="text-center">{{$Totalvehicle}}</td>
             <td></td>
             <td></td>
         </tr>
         <tr>
             <td>
-                <p>Akun Depr. Kendaraan ({{$Totaldepvehicle}})</p>
+                <p>Akun Depr. Kendaraan </p>
             </td>
-            <td class="text-center"></td>
+            <td class="text-center">{{$Totaldepvehicle}}</td>
             <td></td>
             <td></td>
         </tr>
         <tr>
             <td>
-                <p></p>
+                <p>Gedung </p>
             </td>
-            <td class="text-center">{{$TotalAmountvehicle}}</td>
+            <td class="text-center">{{$TotalBulding}}</td>
             <td></td>
             <td></td>
         </tr>
         <tr>
             <td>
-                <p>Gedung ({{$TotalBulding}})</p>
+                <p>Akun Depr. Gedung </p>
             </td>
-            <td class="text-center"></td>
+            <td class="text-center">{{$DepBulding}}</td>
             <td></td>
             <td></td>
         </tr>
         <tr>
             <td>
-                <p>Akun Depr. Gedung ({{$DepBulding}})</p>
+                <p >Peralatan </p>
             </td>
-            <td class="text-center"></td>
+            <td class="text-center">{{$TotalEquipment}}</td>
             <td></td>
             <td></td>
         </tr>
         <tr>
             <td>
-                <p></p>
+                <p>Akun Depr. Perlatan </p>
             </td>
-            <td class="text-center">{{$TotalAmountBulding}}</td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>
-                <p >Peralatan ({{$TotalEquipment}})</p>
-            </td>
-            <td class="text-center"></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>
-                <p>Akun Depr. Perlatan ({{$TotalDepEquip}})</p>
-            </td>
-            <td class="text-center"></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>
-                <p></p>
-            </td>
-            <td class="text-center">{{$TotalAmountEquiptment}}</td>
+            <td class="text-center">{{$TotalDepEquip}}</td>
             <td></td>
             <td></td>
         </tr>
