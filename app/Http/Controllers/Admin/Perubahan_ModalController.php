@@ -63,11 +63,6 @@ class Perubahan_ModalController extends Controller
         $year=date("Y",$dateYear);
 
    
-        //sales
-        // $sales = JurnalDetail::where('akun_id', 29)
-        //     ->whereMonth('created_at', $month)
-        //     ->whereYear('created_at', $year)
-        //     ->sum(DB::raw('credit'));
         $sales = DB::table('jurnal_lines')
             ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
             ->where('akun_id', 29)
@@ -113,7 +108,7 @@ class Perubahan_ModalController extends Controller
         //     ->sum(DB::raw('debit - credit'));
         $bulding_expense = DB::table('jurnal_lines')
             ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
-            ->where('akun_id', 16)
+            ->where('akun_id', 48)
             ->whereMonth('jurnals.transaction_date', $month)
             ->whereYear('jurnals.transaction_date', $year)
             ->sum(DB::raw('debit - credit'));
@@ -171,26 +166,28 @@ class Perubahan_ModalController extends Controller
             ->sum(DB::raw('debit - credit'));
         $OtherExpenses =$other_expenses;
 
-        $capital = DB::table('jurnal_lines')
+        $maintenance_expenses = DB::table('jurnal_lines')
             ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
-            ->where('akun_id', 27)
+            ->where('akun_id', 58)
             ->whereMonth('jurnals.transaction_date', $month)
             ->whereYear('jurnals.transaction_date', $year)
             ->sum(DB::raw('debit - credit'));
-        $TotalCapital =$capital;
+        $MaintenanceExpenses =$maintenance_expenses;
 
-        $prive = DB::table('jurnal_lines')
+        $electricwaterExpenses = DB::table('jurnal_lines')
             ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
-            ->where('akun_id', 28)
+            ->where('akun_id', 59)
             ->whereMonth('jurnals.transaction_date', $month)
             ->whereYear('jurnals.transaction_date', $year)
             ->sum(DB::raw('debit - credit'));
-        $Totalprive =$prive;
+        $ElectricWaterExpenses =$electricwaterExpenses;
+
+ 
 
         // count all laba dan rugi
         $totalPendapatan = $salesTotal;
         $totalLabaKotor = $totalPendapatan - $purchaseTotal;
-        $AllExpense = $salaryTotal+$insureance_exp_total+$buildingExpenseTotal+$AdvExpense+$EquipExpense+$DepEquip+$OtherExpenses;
+        $AllExpense = $salaryTotal+$insureance_exp_total+$buildingExpenseTotal+$AdvExpense+$EquipExpense+$DepEquip+$OtherExpenses+$MaintenanceExpenses+$ElectricWaterExpenses;
         $totalLabaBersih =$totalLabaKotor-$AllExpense;
 
         $TotalPerubahan =$TotalCapital+$totalLabaBersih-$Totalprive;
