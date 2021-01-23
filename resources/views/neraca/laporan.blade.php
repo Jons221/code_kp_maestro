@@ -121,22 +121,6 @@
         </tr>
         <tr>
             <td>
-                <p>Gedung </p>
-            </td>
-            <td class="text-center">{{$TotalBulding}}</td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>
-                <p>Akun Depr. Gedung </p>
-            </td>
-            <td class="text-center">{{$DepBulding}}</td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>
                 <p >Peralatan </p>
             </td>
             <td class="text-center">{{$TotalEquipment}}</td>

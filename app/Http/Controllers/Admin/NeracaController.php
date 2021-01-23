@@ -238,26 +238,26 @@ class NeracaController extends Controller
         //     ->whereMonth('created_at', $month)
         //     ->whereYear('created_at', $year)
         //     ->sum(DB::raw('debit - credit'));
-        $building = DB::table('jurnal_lines')
-            ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
-            ->where('akun_id', 16)
-            ->whereMonth('jurnals.transaction_date', $month)
-            ->whereYear('jurnals.transaction_date', $year)
-            ->sum(DB::raw('debit - credit'));
-        $TotalBulding =$building;
+        // $building = DB::table('jurnal_lines')
+        //     ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
+        //     ->where('akun_id', 16)
+        //     ->whereMonth('jurnals.transaction_date', $month)
+        //     ->whereYear('jurnals.transaction_date', $year)
+        //     ->sum(DB::raw('debit - credit'));
+        // $TotalBulding =$building;
 
         // dep building
         // $depbuilding = JurnalDetail::where('akun_id', 17)
         //     ->whereMonth('created_at', $month)
         //     ->whereYear('created_at', $year)
         //     ->sum(DB::raw('credit'));
-        $depbuilding = DB::table('jurnal_lines')
-            ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
-            ->where('akun_id', 17)
-            ->whereMonth('jurnals.transaction_date', $month)
-            ->whereYear('jurnals.transaction_date', $year)
-            ->sum(DB::raw('debit - credit'));
-        $DepBulding =$depbuilding;
+        // $depbuilding = DB::table('jurnal_lines')
+        //     ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
+        //     ->where('akun_id', 17)
+        //     ->whereMonth('jurnals.transaction_date', $month)
+        //     ->whereYear('jurnals.transaction_date', $year)
+        //     ->sum(DB::raw('debit - credit'));
+        // $DepBulding =$depbuilding;
 
 
         // Other Expenses
@@ -287,7 +287,7 @@ class NeracaController extends Controller
         //     ->sum(DB::raw('debit - credit'));
         $depequipmnet = DB::table('jurnal_lines')
             ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
-            ->where('akun_id', 11)
+            ->where('akun_id', 41)
             ->whereMonth('jurnals.transaction_date', $month)
             ->whereYear('jurnals.transaction_date', $year)
             ->sum(DB::raw('debit - credit'));
@@ -295,10 +295,10 @@ class NeracaController extends Controller
  
 
         // count all neraca
-        $TotalAmountBulding = $TotalBulding-$DepBulding;
+        // $TotalAmountBulding = $TotalBulding-$DepBulding;
         $TotalAmountvehicle = $Totalvehicle+$Totaldepvehicle;
         $TotalAmountEquiptment = $TotalEquipment-$TotalDepEquip;
-        $TotalIn=$TotalKas+$TotalAR+$TotalPerlekapan+$TotalLand+$TotalAmountBulding+$TotalAmountEquiptment+$prepaid_rent_total+$note_reciev_total+$TotalAmountvehicle;
+        $TotalIn=$TotalKas+$TotalAR+$TotalPerlekapan+$TotalLand+$TotalAmountEquiptment+$prepaid_rent_total+$note_reciev_total+$TotalAmountvehicle;
         $TotalOut=$TotalAP+$TotalBunga+$TotalBank+$TotalCapital+$retained_earn_total;
         // $totalPendapatan = $salesTotal - ($salesDiscountTotal + $salesReturTotal);
         // $totalLabaKotor = $totalPendapatan - $purchaseTotal;
@@ -325,13 +325,10 @@ class NeracaController extends Controller
                 'Totalvehicle'=> $Totalvehicle,
                 'Totaldepvehicle'=>$Totaldepvehicle,
                 'TotalAmountvehicle'=>$TotalAmountvehicle,
-                'TotalBulding' => $TotalBulding,
-                'DepBulding' => $DepBulding,
                 'TotalEquipment' => $TotalEquipment,
                 'TotalDepEquip' => $TotalDepEquip,
                 'TotalIn' => $TotalIn,
                 'TotalOut' => $TotalOut,
-                'TotalAmountBulding' => $TotalAmountBulding,
                 'TotalAmountEquiptment' => $TotalAmountEquiptment,
                 'reportMonthYear' => 'Laporan Bulan '. $month . ' Tahun ' . $year,
             ]
