@@ -99,7 +99,7 @@
             <td>
                 <p>Perlengkapan</p>
             </td>
-            <td class="text-center">{{$note_reciev_total}}</td>
+            <td class="text-center">{{$total_supplies}}</td>
             <td>Laba ditahan</td>
             <td class="text-center">{{$retained_earn_total}}</td>
         </tr>
