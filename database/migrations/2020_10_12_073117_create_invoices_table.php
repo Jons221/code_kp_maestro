@@ -18,8 +18,8 @@ class CreateInvoicesTable extends Migration
             $table->string('number', 100);
             $table->string('type', 100);
             $table->date('order_date')->nullable();
-            $table->double('grand_total', 8, 2)->nullable();
-            $table->double('left_payment', 8, 2);
+            $table->double('grand_total', 30, 2)->nullable();
+            $table->double('left_payment', 30, 2);
             $table->string('state', 100);
             $table->foreignId('partner_id')->references('id')->on('partners');
             $table->text('remarks')->nullable();

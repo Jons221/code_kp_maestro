@@ -24,6 +24,12 @@ class DatabaseSeeder extends Seeder
                 'password' => Hash::make('admin123')
             ]
         );
-        $this->call(AkunSeeder::class);
+        $this->call(
+            [
+                AkunSeeder::class,
+                JournalSeeder::class,
+                JournallinesSeeder::class,
+            ]
+            );
     }
 }
