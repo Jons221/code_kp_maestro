@@ -125,6 +125,7 @@ class JurnalController extends Controller
                 $jurnalDetail = [
                     'akun_id' => $akun['akun_id'],
                     'jurnal_id' => $jurnal->id,
+                    'description' => $akun['description'],
                     'debit' => $akun['debit'],
                     'credit' => $akun['credit'],
                     'invoice_id' => $invoice->invoice_id,
