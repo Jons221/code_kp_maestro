@@ -141,7 +141,7 @@
             </td>
             <td class="text-center">{{$TotalIn}}</td>
             <td>Jumlah</td>
-            <td>{{$TotalOut}}</td>
+            <td class="text-center">{{$TotalOut}}</td>
         </tr>
     </table>
 </body>

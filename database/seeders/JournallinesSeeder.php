@@ -75,15 +75,15 @@ class JournallinesSeeder extends Seeder
             [
                 'jurnal_id' => '1',
                 'akun_id' => '27',
-                'debit' => '100000000',
-                'credit' => '0',
+                'debit' => '0',
+                'credit' => '100000000',
                 'description' => 'Opening balance',
             ],
             [
                 'jurnal_id' => '1',
                 'akun_id' => '57',
-                'debit' => '36950000',
-                'credit' => '0',
+                'debit' => '0',
+                'credit' => '36950000',
                 'description' => 'Opening balance',
             ],
         ];

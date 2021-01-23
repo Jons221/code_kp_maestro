@@ -154,7 +154,7 @@ class NeracaController extends Controller
             ->where('akun_id', 58)
             ->whereMonth('jurnals.transaction_date', $month)
             ->whereYear('jurnals.transaction_date', $year)
-            ->sum(DB::raw('debit - credit'));
+            ->sum(DB::raw('credit - debit'));
         $TotalBunga =$interest ;
 
         //     ->sum(DB::raw('debit - credit'));
@@ -172,7 +172,7 @@ class NeracaController extends Controller
             ->where('akun_id', 27)
             ->whereMonth('jurnals.transaction_date', $month)
             ->whereYear('jurnals.transaction_date', $year)
-            ->sum(DB::raw('debit - credit'));
+            ->sum(DB::raw('credit - debit'));
         $TotalCapital =$capital;
 
         $retained_earn = DB::table('jurnal_lines')
@@ -180,7 +180,7 @@ class NeracaController extends Controller
             ->where('akun_id', 57)
             ->whereMonth('jurnals.transaction_date', $month)
             ->whereYear('jurnals.transaction_date', $year)
-            ->sum(DB::raw('debit - credit'));
+            ->sum(DB::raw('credit - debit'));
         $retained_earn_total =$retained_earn;
 
         

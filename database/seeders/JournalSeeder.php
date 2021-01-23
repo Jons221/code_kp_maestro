@@ -19,8 +19,8 @@ class JournalSeeder extends Seeder
             [
                 'transaction_no' => 'Journal2021-1',
                 'transaction_date' => '2020-10-01',
-                'total_debit' => 140450000,
-                'total_credit' => 140450000,
+                'total_debit' => 147200000,
+                'total_credit' => 147200000,
                 'created_at'=>'2020-10-01 00:00:00',
             ],
         ];
