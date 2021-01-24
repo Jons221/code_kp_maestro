@@ -150,13 +150,13 @@ class NeracaController extends Controller
             ->sum(DB::raw('credit-debit'));
         $TotalAP =$payable;
 
-        $interest = DB::table('jurnal_lines')
-            ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
-            ->where('akun_id', 58)
-            ->whereMonth('jurnals.transaction_date', $month)
-            ->whereYear('jurnals.transaction_date', $year)
-            ->sum(DB::raw('credit - debit'));
-        $TotalBunga =$interest ;
+        // $interest = DB::table('jurnal_lines')
+        //     ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
+        //     ->where('akun_id', 58)
+        //     ->whereMonth('jurnals.transaction_date', $month)
+        //     ->whereYear('jurnals.transaction_date', $year)
+        //     ->sum(DB::raw('credit - debit'));
+        $TotalBunga =0 ;
 
         //     ->sum(DB::raw('debit - credit'));
 
@@ -185,78 +185,89 @@ class NeracaController extends Controller
         $retained_earn_total =$retained_earn;
 
         
-        // $note_reciev = DB::table('jurnal_lines')
-        //     ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
-        //     ->where('akun_id', 6)
-        //     ->whereMonth('jurnals.transaction_date', $month)
-        //     ->whereYear('jurnals.transaction_date', $year)
-        //     ->sum(DB::raw('debit - credit'));
-        // $note_reciev_total =$note_reciev; 
-
         
+        // Perbuahan modal
 
-        // perlekapan = Machine
-        // $perlekapan = JurnalDetail::where('akun_id', 14)
-        //     ->whereMonth('created_at', $month)
-        //     ->whereYear('created_at', $year)
-        //     ->sum(DB::raw('debit - credit'));
+        $sales = DB::table('jurnal_lines')
+            ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
+            ->where('akun_id', 29)
+            ->whereMonth('jurnals.transaction_date', $month)
+            ->whereYear('jurnals.transaction_date', $year)
+            ->sum(DB::raw('credit-debit'));
+        $salesTotal =$sales;
 
-        // $perlekapan = DB::table('jurnal_lines')
-        //     ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
-        //     ->where('akun_id', 7)
-        //     ->whereMonth('jurnals.transaction_date', $month)
-        //     ->whereYear('jurnals.transaction_date', $year)
-        //     ->sum(DB::raw('debit - credit'));
-        // $TotalPerlekapan =$perlekapan;
 
-        // land
-        // $land = JurnalDetail::where('akun_id', 18)
-        //     ->whereMonth('created_at', $month)
-        //     ->whereYear('created_at', $year)
-        //     ->sum(DB::raw('debit - credit'));
-        // $land = DB::table('jurnal_lines')
-        //     ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
-        //     ->where('akun_id', 18)
-        //     ->whereMonth('jurnals.transaction_date', $month)
-        //     ->whereYear('jurnals.transaction_date', $year)
-        //     ->sum(DB::raw('debit - credit'));
-        // $TotalLand =$land;
+        $purchase = DB::table('jurnal_lines')
+            ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
+            ->where('akun_id', 32)
+            ->whereMonth('jurnals.transaction_date', $month)
+            ->whereYear('jurnals.transaction_date', $year)
+            ->sum(DB::raw('debit-credit'));
+        $purchaseTotal =$purchase;
 
+        $salary = DB::table('jurnal_lines')
+            ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
+            ->where('akun_id', 45)
+            ->whereMonth('jurnals.transaction_date', $month)
+            ->whereYear('jurnals.transaction_date', $year)
+            ->sum(DB::raw('debit - credit'));
+        $salaryTotal =$salary;
+
+        $insureance_exp = DB::table('jurnal_lines')
+            ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
+            ->where('akun_id', 49)
+            ->whereMonth('jurnals.transaction_date', $month)
+            ->whereYear('jurnals.transaction_date', $year)
+            ->sum(DB::raw('debit - credit'));
+        $insureance_exp_total =$insureance_exp;
         
+        $bulding_expense = DB::table('jurnal_lines')
+            ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
+            ->where('akun_id', 48)
+            ->whereMonth('jurnals.transaction_date', $month)
+            ->whereYear('jurnals.transaction_date', $year)
+            ->sum(DB::raw('debit - credit'));
+        $buildingExpenseTotal =$bulding_expense;
 
-        // building
-        // $building = JurnalDetail::where('akun_id', 16)
-        //     ->whereMonth('created_at', $month)
-        //     ->whereYear('created_at', $year)
-        //     ->sum(DB::raw('debit - credit'));
-        // $building = DB::table('jurnal_lines')
-        //     ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
-        //     ->where('akun_id', 16)
-        //     ->whereMonth('jurnals.transaction_date', $month)
-        //     ->whereYear('jurnals.transaction_date', $year)
-        //     ->sum(DB::raw('debit - credit'));
-        // $TotalBulding =$building;
+        $adv = DB::table('jurnal_lines')
+            ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
+            ->where('akun_id', 38)
+            ->whereMonth('jurnals.transaction_date', $month)
+            ->whereYear('jurnals.transaction_date', $year)
+            ->sum(DB::raw('debit - credit'));
+        $AdvExpense =$adv;
 
-        // dep building
-        // $depbuilding = JurnalDetail::where('akun_id', 17)
-        //     ->whereMonth('created_at', $month)
-        //     ->whereYear('created_at', $year)
-        //     ->sum(DB::raw('credit'));
-        // $depbuilding = DB::table('jurnal_lines')
-        //     ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
-        //     ->where('akun_id', 17)
-        //     ->whereMonth('jurnals.transaction_date', $month)
-        //     ->whereYear('jurnals.transaction_date', $year)
-        //     ->sum(DB::raw('debit - credit'));
-        // $DepBulding =$depbuilding;
+        $other_expenses = DB::table('jurnal_lines')
+            ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
+            ->where('akun_id', 55)
+            ->whereMonth('jurnals.transaction_date', $month)
+            ->whereYear('jurnals.transaction_date', $year)
+            ->sum(DB::raw('debit - credit'));
+        $OtherExpenses =$other_expenses;
 
+        $maintenance_expenses = DB::table('jurnal_lines')
+            ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
+            ->where('akun_id', 58)
+            ->whereMonth('jurnals.transaction_date', $month)
+            ->whereYear('jurnals.transaction_date', $year)
+            ->sum(DB::raw('debit - credit'));
+        $MaintenanceExpenses =$maintenance_expenses;
 
-        // Other Expenses
-        // $other_expenses = JurnalDetail::where('akun_id', 55)
-        //     ->whereMonth('created_at', $month)
-        //     ->whereYear('created_at', $year)
-        //     ->sum(DB::raw('debit - credit'));
-        // $OtherExpenses =$other_expenses;
+        $electricwaterExpenses = DB::table('jurnal_lines')
+            ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
+            ->where('akun_id', 59)
+            ->whereMonth('jurnals.transaction_date', $month)
+            ->whereYear('jurnals.transaction_date', $year)
+            ->sum(DB::raw('debit - credit'));
+        $ElectricWaterExpenses =$electricwaterExpenses;
+
+        $prive = DB::table('jurnal_lines')
+            ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
+            ->where('akun_id', 28)
+            ->whereMonth('jurnals.transaction_date', $month)
+            ->whereYear('jurnals.transaction_date', $year)
+            ->sum(DB::raw('debit - credit'));
+        $Totalprive =$prive;
 
 
         
@@ -264,16 +275,26 @@ class NeracaController extends Controller
 
         // count all neraca
         // $TotalAmountBulding = $TotalBulding-$DepBulding;
+
+        $totalPendapatan = $salesTotal;
+        $totalLabaKotor = $totalPendapatan - $purchaseTotal;
+        $AllExpense = $salaryTotal+$insureance_exp_total+$buildingExpenseTotal+$AdvExpense+$OtherExpenses+$MaintenanceExpenses+$ElectricWaterExpenses;
+        $totalLabaBersih =$totalLabaKotor-$AllExpense;
+
+        $TotalPerubahan =$totalLabaBersih+$Totalprive;
+
         $TotalAmountvehicle = $Totalvehicle+$Totaldepvehicle;
         $TotalAmountEquiptment = $TotalEquipment-$TotalDepEquip;
         $TotalIn=$TotalKas+$TotalAR+$TotalPurcahse+$prepaid_rent_total+$total_supplies+$Totalvehicle+$Totaldepvehicle+$TotalEquipment+$TotalDepEquip;
-        $TotalOut=$TotalAP+$TotalBunga+$TotalBank+$TotalCapital+$retained_earn_total;
+        $TotalOut=$TotalAP+$TotalBunga+$TotalBank+$TotalCapital+$retained_earn_total+$TotalPerubahan;
+        
 
         $pdf = PDF::loadview('neraca.laporan',
             [
                 'TotalKas' => $TotalKas,
                 'TotalAP' => $TotalAP,
                 'TotalAR' => $TotalAR,
+                'TotalPerubahan'=>$TotalPerubahan,
                 'prepaid_rent_total'=>$prepaid_rent_total,
                 'total_supplies'=>$total_supplies,
                 'retained_earn_total'=>$retained_earn_total,

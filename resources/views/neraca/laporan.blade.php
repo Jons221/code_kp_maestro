@@ -108,8 +108,8 @@
                 <p>Kendaraan </p>
             </td>
             <td class="text-center">{{$Totalvehicle}}</td>
-            <td></td>
-            <td></td>
+            <td>Laba Berjalan</td>
+            <td class="text-center">{{$TotalPerubahan}}</td>
         </tr>
         <tr>
             <td>

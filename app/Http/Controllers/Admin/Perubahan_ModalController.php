@@ -80,11 +80,6 @@ class Perubahan_ModalController extends Controller
             ->sum(DB::raw('debit-credit'));
         $purchaseTotal =$purchase;
 
-        //salary  Office Salaries Expense
-        // $salary = JurnalDetail::where('akun_id', 45)
-        //     ->whereMonth('created_at', $month)
-        //     ->whereYear('created_at', $year)
-        //     ->sum(DB::raw('debit - credit'));
         $salary = DB::table('jurnal_lines')
             ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
             ->where('akun_id', 45)
@@ -101,11 +96,6 @@ class Perubahan_ModalController extends Controller
             ->sum(DB::raw('debit - credit'));
         $insureance_exp_total =$insureance_exp;
         
-        // Building
-        // $bulding_expense = JurnalDetail::where('akun_id', 16)
-        //     ->whereMonth('created_at', $month)
-        //     ->whereYear('created_at', $year)
-        //     ->sum(DB::raw('debit - credit'));
         $bulding_expense = DB::table('jurnal_lines')
             ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
             ->where('akun_id', 48)
@@ -114,11 +104,6 @@ class Perubahan_ModalController extends Controller
             ->sum(DB::raw('debit - credit'));
         $buildingExpenseTotal =$bulding_expense;
 
-        // Advertising Expense
-        // $adv = JurnalDetail::where('akun_id', 38)
-        //     ->whereMonth('created_at', $month)
-        //     ->whereYear('created_at', $year)
-        //     ->sum(DB::raw('debit - credit'));
         $adv = DB::table('jurnal_lines')
             ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
             ->where('akun_id', 38)
@@ -127,37 +112,6 @@ class Perubahan_ModalController extends Controller
             ->sum(DB::raw('debit - credit'));
         $AdvExpense =$adv;
 
-        // Equipment
-        // $equip_expense = JurnalDetail::where('akun_id', 10)
-        //     ->whereMonth('created_at', $month)
-        //     ->whereYear('created_at', $year)
-        //     ->sum(DB::raw('debit - credit'));
-        // $equip_expense = DB::table('jurnal_lines')
-        //     ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
-        //     ->where('akun_id', 10)
-        //     ->whereMonth('jurnals.transaction_date', $month)
-        //     ->whereYear('jurnals.transaction_date', $year)
-        //     ->sum(DB::raw('debit - credit'));
-        // $EquipExpense =$equip_expense;
-
-        // Acc. Depre. Equipment
-        // $dep_equip = JurnalDetail::where('akun_id', 11)
-        //     ->whereMonth('created_at', $month)
-        //     ->whereYear('created_at', $year)
-        //     ->sum(DB::raw('debit - credit'));
-        // $dep_equip = DB::table('jurnal_lines')
-        //     ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
-        //     ->where('akun_id', 11)
-        //     ->whereMonth('jurnals.transaction_date', $month)
-        //     ->whereYear('jurnals.transaction_date', $year)
-        //     ->sum(DB::raw('debit - credit'));
-        // $DepEquip =$dep_equip;
-
-        // Other Expenses
-        // $other_expenses = JurnalDetail::where('akun_id', 55)
-        //     ->whereMonth('created_at', $month)
-        //     ->whereYear('created_at', $year)
-        //     ->sum(DB::raw('debit - credit'));
         $other_expenses = DB::table('jurnal_lines')
             ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
             ->where('akun_id', 55)
@@ -195,7 +149,7 @@ class Perubahan_ModalController extends Controller
             ->where('akun_id', 28)
             ->whereMonth('jurnals.transaction_date', $month)
             ->whereYear('jurnals.transaction_date', $year)
-            ->sum(DB::raw('credit - debit'));
+            ->sum(DB::raw('debit-credit'));
         $Totalprive =$prive;
 
  
