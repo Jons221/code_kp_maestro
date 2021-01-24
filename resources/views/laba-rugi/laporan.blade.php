@@ -125,22 +125,7 @@
             <td></td>
             <td></td>
         </tr>
-        <tr>
-            <td>
-                <p>Beban Perlengkapan</p>
-            </td>
-            <td class="text-center">{{$EquipExpense}}</td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>
-                <p>Beban Penyusutan Peralatan</p>
-            </td>
-            <td class="text-center">{{$DepEquip}}</td>
-            <td></td>
-            <td></td>
-        </tr>
+        
         <tr>
             <td>
                 <p>Beban Rupa-rupa</p>
