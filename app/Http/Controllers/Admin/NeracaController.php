@@ -281,7 +281,7 @@ class NeracaController extends Controller
         $AllExpense = $salaryTotal+$insureance_exp_total+$buildingExpenseTotal+$AdvExpense+$OtherExpenses+$MaintenanceExpenses+$ElectricWaterExpenses;
         $totalLabaBersih =$totalLabaKotor-$AllExpense;
 
-        $TotalPerubahan =$totalLabaBersih+$Totalprive;
+        $TotalPerubahan =$totalLabaBersih-$Totalprive;
 
         $TotalAmountvehicle = $Totalvehicle+$Totaldepvehicle;
         $TotalAmountEquiptment = $TotalEquipment-$TotalDepEquip;
