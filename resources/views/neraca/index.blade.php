@@ -28,8 +28,11 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
-                    <label for="month">Select Month</label>
-                    <input type="month" class="form-control @error('month') is-invalid @enderror" id="month" name="month" value="{{ old('month') }}" required>
+                    <label for="month">Select Date</label>
+                    <label for="month">From</label>
+                    <input type="date" class="form-control @error('month') is-invalid @enderror" id="month" name="month" value="{{ old('month') }}" required>
+                    <label for="month">Until</label>
+                    <input type="date" class="form-control @error('month_until') is-invalid @enderror" id="month_until" name="month_until" value="{{ old('month_until') }}" required>
                     @error('month')
                     <div class="invalid-feedback">
                       {{ $message }}

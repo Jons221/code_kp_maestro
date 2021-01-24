@@ -59,15 +59,17 @@ class Perubahan_ModalController extends Controller
 
         // month and year
         $dateYear=strtotime($request->month);
-        $month=date("m",$dateYear);
-        $year=date("Y",$dateYear);
+        $date_1=date("Y-m-d",$dateYear);
+        $dateYear=date("Y-m-d H:i:s",$dateYear);
+        $date_until=strtotime($request->month_until);
+        $date_2=date("Y-m-d",$date_until);
+        $date_until=date("Y-m-d H:i:s",$date_until);
 
    
         $sales = DB::table('jurnal_lines')
             ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
             ->where('akun_id', 29)
-            ->whereMonth('jurnals.transaction_date', $month)
-            ->whereYear('jurnals.transaction_date', $year)
+            ->whereBetween('jurnals.transaction_date', [$dateYear,$date_until])
             ->sum(DB::raw('credit-debit'));
         $salesTotal =$sales;
 
@@ -75,80 +77,70 @@ class Perubahan_ModalController extends Controller
         $purchase = DB::table('jurnal_lines')
             ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
             ->where('akun_id', 32)
-            ->whereMonth('jurnals.transaction_date', $month)
-            ->whereYear('jurnals.transaction_date', $year)
+            ->whereBetween('jurnals.transaction_date', [$dateYear,$date_until])
             ->sum(DB::raw('debit-credit'));
         $purchaseTotal =$purchase;
 
         $salary = DB::table('jurnal_lines')
             ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
             ->where('akun_id', 45)
-            ->whereMonth('jurnals.transaction_date', $month)
-            ->whereYear('jurnals.transaction_date', $year)
+            ->whereBetween('jurnals.transaction_date', [$dateYear,$date_until])
             ->sum(DB::raw('debit - credit'));
         $salaryTotal =$salary;
 
         $insureance_exp = DB::table('jurnal_lines')
             ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
             ->where('akun_id', 49)
-            ->whereMonth('jurnals.transaction_date', $month)
-            ->whereYear('jurnals.transaction_date', $year)
+            ->whereBetween('jurnals.transaction_date', [$dateYear,$date_until])
             ->sum(DB::raw('debit - credit'));
         $insureance_exp_total =$insureance_exp;
         
         $bulding_expense = DB::table('jurnal_lines')
             ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
             ->where('akun_id', 48)
-            ->whereMonth('jurnals.transaction_date', $month)
-            ->whereYear('jurnals.transaction_date', $year)
+            ->whereBetween('jurnals.transaction_date', [$dateYear,$date_until])
             ->sum(DB::raw('debit - credit'));
         $buildingExpenseTotal =$bulding_expense;
 
         $adv = DB::table('jurnal_lines')
             ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
             ->where('akun_id', 38)
-            ->whereMonth('jurnals.transaction_date', $month)
-            ->whereYear('jurnals.transaction_date', $year)
+            ->whereBetween('jurnals.transaction_date', [$dateYear,$date_until])
             ->sum(DB::raw('debit - credit'));
         $AdvExpense =$adv;
 
         $other_expenses = DB::table('jurnal_lines')
             ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
             ->where('akun_id', 55)
-            ->whereMonth('jurnals.transaction_date', $month)
-            ->whereYear('jurnals.transaction_date', $year)
+            ->whereBetween('jurnals.transaction_date', [$dateYear,$date_until])
             ->sum(DB::raw('debit - credit'));
         $OtherExpenses =$other_expenses;
 
         $maintenance_expenses = DB::table('jurnal_lines')
             ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
             ->where('akun_id', 58)
-            ->whereMonth('jurnals.transaction_date', $month)
-            ->whereYear('jurnals.transaction_date', $year)
+            ->whereBetween('jurnals.transaction_date', [$dateYear,$date_until])
             ->sum(DB::raw('debit - credit'));
         $MaintenanceExpenses =$maintenance_expenses;
 
         $electricwaterExpenses = DB::table('jurnal_lines')
             ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
             ->where('akun_id', 59)
-            ->whereMonth('jurnals.transaction_date', $month)
-            ->whereYear('jurnals.transaction_date', $year)
+            ->whereBetween('jurnals.transaction_date', [$dateYear,$date_until])
             ->sum(DB::raw('debit - credit'));
         $ElectricWaterExpenses =$electricwaterExpenses;
 
         $capital = DB::table('jurnal_lines')
             ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
             ->where('akun_id', 27)
-            ->whereMonth('jurnals.transaction_date', $month)
-            ->whereYear('jurnals.transaction_date', $year)
+            ->whereBetween('jurnals.transaction_date', [$dateYear,$date_until])
             ->sum(DB::raw('credit - debit'));
         $TotalCapital =$capital;
 
         $prive = DB::table('jurnal_lines')
             ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
             ->where('akun_id', 28)
-            ->whereMonth('jurnals.transaction_date', $month)
-            ->whereYear('jurnals.transaction_date', $year)
+            ->whereBetween('jurnals.transaction_date', [$dateYear,$date_until])
             ->sum(DB::raw('debit-credit'));
         $Totalprive =$prive;
 
@@ -170,7 +162,7 @@ class Perubahan_ModalController extends Controller
         $pdf = PDF::loadview('perubahan_modal.laporan',
             [
                 'TotalCapital' => $TotalCapital,
-                'reportMonthYear' => 'Laporan Bulan '. $month . ' Tahun ' . $year,
+                'reportMonthYear' => ' '. $date_1 . ' - ' . $date_2,
                 'TotalCapital' => $TotalCapital,
                 'Totalprive' => $Totalprive,
                 'totalLabaBersih' => $totalLabaBersih,

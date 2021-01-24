@@ -59,8 +59,11 @@ class LabaRugiController extends Controller
 
         // month and year
         $dateYear=strtotime($request->month);
-        $month=date("m",$dateYear);
-        $year=date("Y",$dateYear);
+        $date_1=date("Y-m-d",$dateYear);
+        $dateYear=date("Y-m-d H:i:s",$dateYear);
+        $date_until=strtotime($request->month_until);
+        $date_2=date("Y-m-d",$date_until);
+        $date_until=date("Y-m-d H:i:s",$date_until);
 
    
         //sales
@@ -71,8 +74,7 @@ class LabaRugiController extends Controller
         $sales = DB::table('jurnal_lines')
             ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
             ->where('akun_id', 29)
-            ->whereMonth('jurnals.transaction_date', $month)
-            ->whereYear('jurnals.transaction_date', $year)
+            ->whereBetween('jurnals.transaction_date', [$dateYear,$date_until])
             ->sum(DB::raw('credit-debit'));
         $salesTotal =$sales;
 
@@ -80,8 +82,7 @@ class LabaRugiController extends Controller
         $purchase = DB::table('jurnal_lines')
             ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
             ->where('akun_id', 32)
-            ->whereMonth('jurnals.transaction_date', $month)
-            ->whereYear('jurnals.transaction_date', $year)
+            ->whereBetween('jurnals.transaction_date', [$dateYear,$date_until])
             ->sum(DB::raw('debit-credit'));
         $purchaseTotal =$purchase;
 
@@ -93,16 +94,14 @@ class LabaRugiController extends Controller
         $salary = DB::table('jurnal_lines')
             ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
             ->where('akun_id', 45)
-            ->whereMonth('jurnals.transaction_date', $month)
-            ->whereYear('jurnals.transaction_date', $year)
+            ->whereBetween('jurnals.transaction_date', [$dateYear,$date_until])
             ->sum(DB::raw('debit - credit'));
         $salaryTotal =$salary;
 
         $insureance_exp = DB::table('jurnal_lines')
             ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
             ->where('akun_id', 49)
-            ->whereMonth('jurnals.transaction_date', $month)
-            ->whereYear('jurnals.transaction_date', $year)
+            ->whereBetween('jurnals.transaction_date', [$dateYear,$date_until])
             ->sum(DB::raw('debit - credit'));
         $insureance_exp_total =$insureance_exp;
         
@@ -114,8 +113,7 @@ class LabaRugiController extends Controller
         $bulding_expense = DB::table('jurnal_lines')
             ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
             ->where('akun_id', 48)
-            ->whereMonth('jurnals.transaction_date', $month)
-            ->whereYear('jurnals.transaction_date', $year)
+            ->whereBetween('jurnals.transaction_date', [$dateYear,$date_until])
             ->sum(DB::raw('debit - credit'));
         $buildingExpenseTotal =$bulding_expense;
 
@@ -127,8 +125,7 @@ class LabaRugiController extends Controller
         $adv = DB::table('jurnal_lines')
             ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
             ->where('akun_id', 38)
-            ->whereMonth('jurnals.transaction_date', $month)
-            ->whereYear('jurnals.transaction_date', $year)
+            ->whereBetween('jurnals.transaction_date', [$dateYear,$date_until])
             ->sum(DB::raw('debit - credit'));
         $AdvExpense =$adv;
 
@@ -166,24 +163,21 @@ class LabaRugiController extends Controller
         $other_expenses = DB::table('jurnal_lines')
             ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
             ->where('akun_id', 55)
-            ->whereMonth('jurnals.transaction_date', $month)
-            ->whereYear('jurnals.transaction_date', $year)
+            ->whereBetween('jurnals.transaction_date', [$dateYear,$date_until])
             ->sum(DB::raw('debit - credit'));
         $OtherExpenses =$other_expenses;
 
         $maintenance_expenses = DB::table('jurnal_lines')
             ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
             ->where('akun_id', 58)
-            ->whereMonth('jurnals.transaction_date', $month)
-            ->whereYear('jurnals.transaction_date', $year)
+            ->whereBetween('jurnals.transaction_date', [$dateYear,$date_until])
             ->sum(DB::raw('debit - credit'));
         $MaintenanceExpenses =$maintenance_expenses;
 
         $electricwaterExpenses = DB::table('jurnal_lines')
             ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
             ->where('akun_id', 59)
-            ->whereMonth('jurnals.transaction_date', $month)
-            ->whereYear('jurnals.transaction_date', $year)
+            ->whereBetween('jurnals.transaction_date', [$dateYear,$date_until])
             ->sum(DB::raw('debit - credit'));
         $ElectricWaterExpenses =$electricwaterExpenses;
 
@@ -210,7 +204,7 @@ class LabaRugiController extends Controller
                 'AllExpense' => $AllExpense,
                 'salaryTotal' => $salaryTotal,
                 'buildingExpenseTotal' => $buildingExpenseTotal,
-                'reportMonthYear' => 'Laporan Bulan '. $month . ' Tahun ' . $year,
+                'reportMonthYear' => ''. $date_1 . ' Tahun ' . $date_2,
                 'totalLabaKotor' => $totalLabaKotor,
                 'totalPurchase' => $purchaseTotal,
                 'totalLabaBersih' => $totalLabaBersih,
