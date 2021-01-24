@@ -201,13 +201,9 @@
 				});
 			
 			if(data !== null && data.akun !== null) {
+				let option = new Option(data.akun.name, data.akun.id, false, false);
 				oldRow.find("select.select2").append(
-						new Option(
-							data.akun.name,
-							data.akun.id,
-							false,
-							false,
-						)
+						option
 					)
 				.trigger('change');
 			}
