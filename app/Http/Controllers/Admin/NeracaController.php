@@ -81,7 +81,8 @@ class NeracaController extends Controller
             ->sum(DB::raw('debit-credit'));
 
         $TotalAR =$receivable;
-            $purchase = DB::table('jurnal_lines')
+
+        $purchase = DB::table('jurnal_lines')
             ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
             ->where('akun_id', 5)
             ->whereMonth('jurnals.transaction_date', $month)
