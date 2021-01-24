@@ -34,7 +34,7 @@ class AkunSeeder extends Seeder
             ],
             [
                 'code' => '1.1.3',
-                'name' => 'Allowances for Doubtful',
+                'name' => 'Prepaid Insurace',
             ],
             [
                 'code' => '1.1.4',
@@ -246,7 +246,7 @@ class AkunSeeder extends Seeder
             ],
             [
                 'code' => '9',
-                'name' => 'Maintenance Expense',
+                'name' => 'Interest Payable',
             ],
             [
                 'code' => '10',
