@@ -115,7 +115,7 @@ class NeracaController extends Controller
             ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
             ->where('akun_id', 13)
             ->whereBetween('jurnals.transaction_date', [$dateYear,$date_until])
-            ->sum(DB::raw('debit - credit'));
+            ->sum(DB::raw('credit-debit'));
         $Totaldepvehicle =$dep_vehicle;
 
         $equipmnet = DB::table('jurnal_lines')
@@ -129,7 +129,7 @@ class NeracaController extends Controller
             ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
             ->where('akun_id', 41)
             ->whereBetween('jurnals.transaction_date', [$dateYear,$date_until])
-            ->sum(DB::raw('debit - credit'));
+            ->sum(DB::raw('credit-debit'));
         $TotalDepEquip =$depequipmnet;
 
 
@@ -264,9 +264,9 @@ class NeracaController extends Controller
 
         $TotalPerubahan =$totalLabaBersih-$Totalprive;
 
-        $TotalAmountvehicle = $Totalvehicle+$Totaldepvehicle;
+        $TotalAmountvehicle = $Totalvehicle-$Totaldepvehicle;
         $TotalAmountEquiptment = $TotalEquipment-$TotalDepEquip;
-        $TotalIn=$TotalKas+$TotalAR+$TotalPurcahse+$prepaid_rent_total+$total_supplies+$Totalvehicle+$Totaldepvehicle+$TotalEquipment+$TotalDepEquip;
+        $TotalIn=$TotalKas+$TotalAR+$TotalPurcahse+$prepaid_rent_total+$total_supplies+$Totalvehicle-$Totaldepvehicle+$TotalEquipment-$TotalDepEquip;
         $TotalOut=$TotalAP+$TotalBunga+$TotalBank+$TotalCapital+$retained_earn_total+$TotalPerubahan;
         
 
