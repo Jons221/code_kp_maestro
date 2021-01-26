@@ -224,14 +224,14 @@ class NeracaController extends Controller
 
         $acc_equip_expense = DB::table('jurnal_lines')
             ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
-            ->where('akun_id', 47)
+            ->where('akun_id', 60)
             ->whereBetween('jurnals.transaction_date', [$dateYear,$date_until])
             ->sum(DB::raw('debit - credit'));
         $AccEquipExpense =$acc_equip_expense;
 
         $acc_vechicle_expense = DB::table('jurnal_lines')
             ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
-            ->where('akun_id', 60)
+            ->where('akun_id', 61)
             ->whereBetween('jurnals.transaction_date', [$dateYear,$date_until])
             ->sum(DB::raw('debit - credit'));
         $AccVechicleExpense =$acc_vechicle_expense;
