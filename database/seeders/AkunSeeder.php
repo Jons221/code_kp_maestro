@@ -178,7 +178,7 @@ class AkunSeeder extends Seeder
             ],
             [
                 'code' => '6.1.4',
-                'name' => 'Depre. Store Equipment Expense',
+                'name' => 'Depre. Store Equipment',
             ],
             [
                 'code' => '6.1.5',
@@ -251,6 +251,10 @@ class AkunSeeder extends Seeder
             [
                 'code' => '10',
                 'name' => 'Electric and water expense',
+            ],
+            [
+                'code' => '1.2.11',
+                'name' => 'Acc. Depre. Vehicle expense',
             ],
         ];
         foreach ($akuns as $akun) {

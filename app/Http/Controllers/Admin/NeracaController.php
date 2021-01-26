@@ -115,7 +115,7 @@ class NeracaController extends Controller
             ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
             ->where('akun_id', 13)
             ->whereBetween('jurnals.transaction_date', [$dateYear,$date_until])
-            ->sum(DB::raw('credit-debit'));
+            ->sum(DB::raw('debit-credit'));
         $Totaldepvehicle =$dep_vehicle;
 
         $equipmnet = DB::table('jurnal_lines')
@@ -129,7 +129,7 @@ class NeracaController extends Controller
             ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
             ->where('akun_id', 41)
             ->whereBetween('jurnals.transaction_date', [$dateYear,$date_until])
-            ->sum(DB::raw('credit-debit'));
+            ->sum(DB::raw('debit-credit'));
         $TotalDepEquip =$depequipmnet;
 
 
@@ -222,6 +222,20 @@ class NeracaController extends Controller
             ->sum(DB::raw('debit - credit'));
         $AdvExpense =$adv;
 
+        $acc_equip_expense = DB::table('jurnal_lines')
+            ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
+            ->where('akun_id', 47)
+            ->whereBetween('jurnals.transaction_date', [$dateYear,$date_until])
+            ->sum(DB::raw('debit - credit'));
+        $AccEquipExpense =$acc_equip_expense;
+
+        $acc_vechicle_expense = DB::table('jurnal_lines')
+            ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
+            ->where('akun_id', 60)
+            ->whereBetween('jurnals.transaction_date', [$dateYear,$date_until])
+            ->sum(DB::raw('debit - credit'));
+        $AccVechicleExpense =$acc_vechicle_expense;
+
         $other_expenses = DB::table('jurnal_lines')
             ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
             ->where('akun_id', 55)
@@ -259,14 +273,14 @@ class NeracaController extends Controller
 
         $totalPendapatan = $salesTotal;
         $totalLabaKotor = $totalPendapatan - $purchaseTotal;
-        $AllExpense = $salaryTotal+$insureance_exp_total+$buildingExpenseTotal+$AdvExpense+$OtherExpenses+$MaintenanceExpenses+$ElectricWaterExpenses;
+        $AllExpense = $salaryTotal+$insureance_exp_total+$buildingExpenseTotal+$AdvExpense+$OtherExpenses+$MaintenanceExpenses+$ElectricWaterExpenses+$AccEquipExpense+$AccVechicleExpense;
         $totalLabaBersih =$totalLabaKotor-$AllExpense;
 
         $TotalPerubahan =$totalLabaBersih-$Totalprive;
 
-        $TotalAmountvehicle = $Totalvehicle-$Totaldepvehicle;
+        $TotalAmountvehicle = $Totalvehicle+$Totaldepvehicle;
         $TotalAmountEquiptment = $TotalEquipment-$TotalDepEquip;
-        $TotalIn=$TotalKas+$TotalAR+$TotalPurcahse+$prepaid_rent_total+$total_supplies+$Totalvehicle-$Totaldepvehicle+$TotalEquipment-$TotalDepEquip;
+        $TotalIn=$TotalKas+$TotalAR+$TotalPurcahse+$prepaid_rent_total+$total_supplies+$Totalvehicle+$Totaldepvehicle+$TotalEquipment+$TotalDepEquip;
         $TotalOut=$TotalAP+$TotalBunga+$TotalBank+$TotalCapital+$retained_earn_total+$TotalPerubahan;
         
 

@@ -109,6 +109,20 @@ class Perubahan_ModalController extends Controller
             ->sum(DB::raw('debit - credit'));
         $AdvExpense =$adv;
 
+        $acc_equip_expense = DB::table('jurnal_lines')
+            ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
+            ->where('akun_id', 47)
+            ->whereBetween('jurnals.transaction_date', [$dateYear,$date_until])
+            ->sum(DB::raw('debit - credit'));
+        $AccEquipExpense =$acc_equip_expense;
+
+        $acc_vechicle_expense = DB::table('jurnal_lines')
+            ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
+            ->where('akun_id', 60)
+            ->whereBetween('jurnals.transaction_date', [$dateYear,$date_until])
+            ->sum(DB::raw('debit - credit'));
+        $AccVechicleExpense =$acc_vechicle_expense;
+
         $other_expenses = DB::table('jurnal_lines')
             ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
             ->where('akun_id', 55)
@@ -149,7 +163,7 @@ class Perubahan_ModalController extends Controller
         // count all laba dan rugi
         $totalPendapatan = $salesTotal;
         $totalLabaKotor = $totalPendapatan - $purchaseTotal;
-        $AllExpense = $salaryTotal+$insureance_exp_total+$buildingExpenseTotal+$AdvExpense+$OtherExpenses+$MaintenanceExpenses+$ElectricWaterExpenses;
+        $AllExpense = $salaryTotal+$insureance_exp_total+$buildingExpenseTotal+$AdvExpense+$OtherExpenses+$MaintenanceExpenses+$ElectricWaterExpenses+$AccEquipExpense+$AccVechicleExpense;
         $totalLabaBersih =$totalLabaKotor-$AllExpense;
 
         $TotalPerubahan =$TotalCapital+$totalLabaBersih-$Totalprive;

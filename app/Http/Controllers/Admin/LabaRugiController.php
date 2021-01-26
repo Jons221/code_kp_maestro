@@ -147,13 +147,19 @@ class LabaRugiController extends Controller
         //     ->whereMonth('created_at', $month)
         //     ->whereYear('created_at', $year)
         //     ->sum(DB::raw('debit - credit'));
-        // $dep_equip = DB::table('jurnal_lines')
-        //     ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
-        //     ->where('akun_id', 11)
-        //     ->whereMonth('jurnals.transaction_date', $month)
-        //     ->whereYear('jurnals.transaction_date', $year)
-        //     ->sum(DB::raw('debit - credit'));
-        // $DepEquip =$dep_equip;
+        $acc_equip_expense = DB::table('jurnal_lines')
+            ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
+            ->where('akun_id', 47)
+            ->whereBetween('jurnals.transaction_date', [$dateYear,$date_until])
+            ->sum(DB::raw('debit - credit'));
+        $AccEquipExpense =$acc_equip_expense;
+
+        $acc_vechicle_expense = DB::table('jurnal_lines')
+            ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
+            ->where('akun_id', 60)
+            ->whereBetween('jurnals.transaction_date', [$dateYear,$date_until])
+            ->sum(DB::raw('debit - credit'));
+        $AccVechicleExpense =$acc_vechicle_expense;
 
         // Other Expenses
         // $other_expenses = JurnalDetail::where('akun_id', 55)
@@ -186,7 +192,7 @@ class LabaRugiController extends Controller
         // count all laba dan rugi
         $totalPendapatan = $salesTotal;
         $totalLabaKotor = $totalPendapatan - $purchaseTotal;
-        $AllExpense = $salaryTotal+$insureance_exp_total+$buildingExpenseTotal+$AdvExpense+$OtherExpenses+$MaintenanceExpenses+$ElectricWaterExpenses;
+        $AllExpense = $salaryTotal+$insureance_exp_total+$buildingExpenseTotal+$AdvExpense+$OtherExpenses+$MaintenanceExpenses+$ElectricWaterExpenses+$AccVechicleExpense+$AccEquipExpense;
         $totalLabaBersih =$totalLabaKotor-$AllExpense;
         // LabaRugi::create([
         //     'laba_rugi' => $totalLabaBersihOperasional,
@@ -204,6 +210,8 @@ class LabaRugiController extends Controller
                 'AllExpense' => $AllExpense,
                 'salaryTotal' => $salaryTotal,
                 'buildingExpenseTotal' => $buildingExpenseTotal,
+                'AccEquipExpense'=>$AccEquipExpense,
+                'AccVechicleExpense'=>$AccVechicleExpense,
                 'reportMonthYear' => ''. $date_1 . ' Tahun ' . $date_2,
                 'totalLabaKotor' => $totalLabaKotor,
                 'totalPurchase' => $purchaseTotal,

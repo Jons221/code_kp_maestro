@@ -125,6 +125,23 @@
             <td></td>
             <td></td>
         </tr>
+        <tr>
+            <td>
+                <p>Beban Penyusutan Peralatan</p>
+            </td>
+            <td class="text-center">{{$AccEquipExpense}}</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                <p>Beban Penyusutan Kendaraan</p>
+            </td>
+            <td class="text-center">{{$AccVechicleExpense}}</td>
+            <td></td>
+            <td></td>
+        </tr>
+        
         
         <tr>
             <td>
