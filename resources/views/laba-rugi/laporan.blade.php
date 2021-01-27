@@ -135,6 +135,14 @@
         </tr>
         <tr>
             <td>
+                <p>Beban Penyusutan Peralatan Kantor</p>
+            </td>
+            <td class="text-center">{{$AccOfficeEquipExpense}}</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
                 <p>Beban Penyusutan Kendaraan</p>
             </td>
             <td class="text-center">{{$AccVechicleExpense}}</td>
