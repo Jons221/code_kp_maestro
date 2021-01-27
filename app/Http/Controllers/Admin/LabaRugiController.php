@@ -163,7 +163,7 @@ class LabaRugiController extends Controller
 
         $acc_office_equip_expense = DB::table('jurnal_lines')
             ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
-            ->where('akun_id', 62)
+            ->where('akun_id', 40)
             ->whereBetween('jurnals.transaction_date', [$dateYear,$date_until])
             ->sum(DB::raw('debit - credit'));
         $AccOfficeEquipExpense =$acc_office_equip_expense;

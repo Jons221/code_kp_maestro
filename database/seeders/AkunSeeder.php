@@ -256,6 +256,14 @@ class AkunSeeder extends Seeder
                 'code' => '1.2.11',
                 'name' => 'Acc. Depre. Vehicle expense',
             ],
+            [
+                'code' => '1.2.11',
+                'name' => 'Acc. Depre. Equipment expense',
+            ],
+            [
+                'code' => '11',
+                'name' => 'Current Year Earning',
+            ],
         ];
         foreach ($akuns as $akun) {
             Akun::create($akun);

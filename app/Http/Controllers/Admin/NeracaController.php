@@ -238,7 +238,7 @@ class NeracaController extends Controller
 
         $acc_office_equip_expense = DB::table('jurnal_lines')
             ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
-            ->where('akun_id', 62)
+            ->where('akun_id', 40)
             ->whereBetween('jurnals.transaction_date', [$dateYear,$date_until])
             ->sum(DB::raw('debit - credit'));
         $AccOfficeEquipExpense =$acc_office_equip_expense;
@@ -264,6 +264,13 @@ class NeracaController extends Controller
             ->sum(DB::raw('debit - credit'));
         $ElectricWaterExpenses =$electricwaterExpenses;
 
+        $current_year_earning = DB::table('jurnal_lines')
+            ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
+            ->where('akun_id', 62)
+            ->whereBetween('jurnals.transaction_date', [$dateYear,$date_until])
+            ->sum(DB::raw('credit - debit'));
+        $CurrentYearEarning =$current_year_earning;
+
         $prive = DB::table('jurnal_lines')
             ->join('jurnals', 'jurnal_lines.jurnal_id', '=', 'jurnals.id')
             ->where('akun_id', 28)
@@ -283,7 +290,7 @@ class NeracaController extends Controller
         $AllExpense = $salaryTotal+$insureance_exp_total+$buildingExpenseTotal+$AdvExpense+$OtherExpenses+$MaintenanceExpenses+$ElectricWaterExpenses+$AccEquipExpense+$AccVechicleExpense+$AccOfficeEquipExpense;
         $totalLabaBersih =$totalLabaKotor-$AllExpense;
 
-        $TotalPerubahan =$totalLabaBersih-$Totalprive;
+        $TotalPerubahan =$totalLabaBersih-$Totalprive+$CurrentYearEarning;
 
         $TotalAmountvehicle = $Totalvehicle+$Totaldepvehicle;
         $TotalAmountEquiptment = $TotalEquipment-$TotalDepEquip;
