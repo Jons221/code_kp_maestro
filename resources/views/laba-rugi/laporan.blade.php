@@ -66,14 +66,14 @@
                 <p>Pendapatan</p>
             </td>
             <td width="25%"></td>
-            <td width="25%" class="text-center">{{$totalPendapatan}}</td>
+            <td width="25%" class="text-center">{{number_format($totalPendapatan)}}</td>
             <td width="25%" class="text-center"></td>
         </tr>
         <tr>
             <td>
                 <p>Harga Pokok Penjualan</p>
             </td>
-            <td class="text-center">{{$totalPurchase}}</td>
+            <td class="text-center">{{number_format($totalPurchase)}}</td>
             <td></td>
             <td class="text-center"></td>
         </tr>
@@ -83,7 +83,7 @@
             </td>
             <td></td>
             <td class="text-center"></td>
-            <td class="text-center">{{$totalLabaKotor}}</td>
+            <td class="text-center">{{number_format($totalLabaKotor)}}</td>
         </tr>
         <tr>
             <td>
@@ -97,7 +97,7 @@
             <td>
                 <p>Beban Gaji</p>
             </td>
-            <td class="text-center">{{$salaryTotal}}</td>
+            <td class="text-center">{{number_format($salaryTotal)}}</td>
             <td></td>
             <td></td>
         </tr>
@@ -105,7 +105,7 @@
             <td>
                 <p>Beban asuransi</p>
             </td>
-            <td class="text-center">{{$insureance_exp_total}}</td>
+            <td class="text-center">{{number_format($insureance_exp_total)}}</td>
             <td></td>
             <td></td>
         </tr>
@@ -113,7 +113,7 @@
             <td>
                 <p>Beban Sewa</p>
             </td>
-            <td class="text-center">{{$buildingExpenseTotal}}</td>
+            <td class="text-center">{{number_format($buildingExpenseTotal)}}</td>
             <td></td>
             <td></td>
         </tr>
@@ -121,7 +121,7 @@
             <td>
                 <p>Beban Iklan</p>
             </td>
-            <td class="text-center">{{$AdvExpense}}</td>
+            <td class="text-center">{{number_format($AdvExpense)}}</td>
             <td></td>
             <td></td>
         </tr>
@@ -129,7 +129,7 @@
             <td>
                 <p>Beban Penyusutan Peralatan</p>
             </td>
-            <td class="text-center">{{$AccEquipExpense}}</td>
+            <td class="text-center">{{number_format($AccEquipExpense)}}</td>
             <td></td>
             <td></td>
         </tr>
@@ -137,7 +137,7 @@
             <td>
                 <p>Beban Penyusutan Peralatan Kantor</p>
             </td>
-            <td class="text-center">{{$AccOfficeEquipExpense}}</td>
+            <td class="text-center">{{number_format($AccOfficeEquipExpense)}}</td>
             <td></td>
             <td></td>
         </tr>
@@ -145,7 +145,7 @@
             <td>
                 <p>Beban Penyusutan Kendaraan</p>
             </td>
-            <td class="text-center">{{$AccVechicleExpense}}</td>
+            <td class="text-center">{{number_format($AccVechicleExpense)}}</td>
             <td></td>
             <td></td>
         </tr>
@@ -155,7 +155,7 @@
             <td>
                 <p>Beban Rupa-rupa</p>
             </td>
-            <td class="text-center">{{$OtherExpenses}}</td>
+            <td class="text-center">{{number_format($OtherExpenses)}}</td>
             <td></td>
             <td></td>
         </tr>
@@ -163,7 +163,7 @@
             <td>
                 <p>Beban Perawatan</p>
             </td>
-            <td class="text-center">{{$MaintenanceExpenses}}</td>
+            <td class="text-center">{{number_format($MaintenanceExpenses)}}</td>
             <td></td>
             <td></td>
         </tr>
@@ -171,7 +171,7 @@
             <td>
                 <p>Beban listrik dan air</p>
             </td>
-            <td class="text-center">{{$ElectricWaterExpenses}}</td>
+            <td class="text-center">{{number_format($ElectricWaterExpenses)}}</td>
             <td></td>
             <td></td>
         </tr>
@@ -181,7 +181,7 @@
             </td>
             <td></td>
             <td></td>
-            <td class="text-center">{{$AllExpense}}</td>
+            <td class="text-center">{{number_format($AllExpense)}}</td>
         </tr>
         <tr class="table-header">
             <td >
@@ -189,7 +189,7 @@
             </td>
             <td></td>
             <td></td>
-            <td class="text-center"><strong>{{$totalLabaBersih}}</strong></td>
+            <td class="text-center"><strong>{{number_format($totalLabaBersih)}}</strong></td>
         </tr>
     </table>
 </body>

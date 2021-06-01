@@ -214,6 +214,34 @@
                 
             });
         });
+
+        $('body').on('click', '#cancel', function () {
+            let id = $(this).data("id");
+            let state = 'cancel';
+
+            let url = window.location.origin + "/cancel";
+            $.ajax({
+                url: url,
+                type: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data: {
+                    id: id,
+                    state: state
+                },
+                success: function (data) {
+                  var table =  $(".yajra-datatable").DataTable();
+                  table.ajax.reload();
+                  var element = document.getElementById("update-status-alert");
+                      element.classList.remove("d-none");
+                      setTimeout(()=>{
+                        element.classList.add("d-none");
+                      }, 3000);
+                },
+                
+            });
+        });        
         
         
   });

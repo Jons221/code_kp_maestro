@@ -26,6 +26,7 @@ Route::middleware(['auth'])->group(function () {
   Route::get('invoices-counter', 'App\Http\Controllers\Admin\InvoiceController@countBadge');
   Route::get('invoices-total/{id}', 'App\Http\Controllers\Admin\InvoiceController@totalPayment');
   Route::post('invoices-status','App\Http\Controllers\Admin\InvoiceController@updateStatus');
+  Route::post('cancel','App\Http\Controllers\Admin\InvoiceController@Cancel');
   Route::post('invoices-payment','App\Http\Controllers\Admin\InvoiceController@createPayment');
   Route::get('invoices/invoice/{id}', 'App\Http\Controllers\Admin\InvoiceController@invoice');
 

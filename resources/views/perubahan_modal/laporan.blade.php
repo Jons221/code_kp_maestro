@@ -66,7 +66,7 @@
                 <p>Modal Awal Per {{$reportMonthYear}}</p>
             </td>
             <td width="25%"></td>
-            <td width="25%" class="text-center">{{$TotalCapital}}</td>
+            <td width="25%" class="text-center">{{number_format($TotalCapital)}}</td>
         </tr>
         <tr>
             <td>
@@ -79,14 +79,14 @@
             <td >
                 <p style="margin-left:20mm">Laba Bersih</p>
             </td>
-            <td class="text-center">{{$totalLabaBersih}}</td>
+            <td class="text-center">{{number_format($totalLabaBersih)}}</td>
             <td class="text-center"></td>
         </tr>
         <tr>
             <td >
                 <p style="margin-left:20mm">Prive</p>
             </td>
-            <td class="text-center">{{$Totalprive}}</td>
+            <td class="text-center">{{number_format($Totalprive)}}</td>
             <td class="text-center"></td>
         </tr>
         
@@ -95,7 +95,7 @@
                 <p >Modal Akhir</p>
             </td>
             <td class="text-center"></td>
-            <td class="text-center">{{$TotalPerubahan}}</td>
+            <td class="text-center">{{number_format($TotalPerubahan)}}</td>
         </tr>
      
     </table>

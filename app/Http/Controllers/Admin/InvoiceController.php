@@ -252,7 +252,7 @@ class InvoiceController extends Controller
                   <div class="dropdown-menu" aria-labelledby="optionMenu">
                     
                     <button class="dropdown-item" type="button" id="show-detail" data-id='.$data->id.'>Show</button>
-                    <button class="dropdown-item" type="button" id="delete" data-id='.$data->id.'>Delete</button>
+                    <button class="dropdown-item" type="button" id="cancel" data-id='.$data->id.'>Cancel</button>
                   </div>
                 </div>';
               } 
@@ -434,6 +434,37 @@ class InvoiceController extends Controller
           'credit'=>0,
         ]);
       }
+      $invoice->state = $state;
+      $invoice->save();
+
+      return response()->json();
+    }
+
+    public function Cancel(Request $request){
+      $id = $request->input('id');
+      $state = 'cancel';
+
+      $invoice = Invoices::find($id);
+      if ($invoice->left_payment !=$invoice->grand_total){
+        return response()->json();
+      }
+      
+      $invoice->state = $state;
+
+      // $jurnal = Jurnal::find($id);
+      $jurnaldetail = DB::table('jurnal_lines')
+      ->select('id', 'jurnal_id')
+      ->where('invoice_id', '=', $id)
+      ->get();
+      
+      $jurnal = DB::table('jurnals')
+      ->select('id')
+      ->where('id', '=', $jurnaldetail[0]->jurnal_id)
+      ->get();
+      
+      $delete_journal_id = Jurnal::find($jurnal[0]->id);
+      $delete_journal_id->jurnalDetail()->delete();
+      $delete_journal_id->delete();
       $invoice->state = $state;
       $invoice->save();
 

@@ -66,56 +66,56 @@
             <td>
                 <p>Kas</p>
             </td>
-            <td class="text-center">{{$TotalKas}}</td>
+            <td class="text-center">{{number_format($TotalKas)}}</td>
             <td >Utang usaha</td>
-            <td class="text-center">{{$TotalAP}}</td>
+            <td class="text-center">{{number_format($TotalAP)}}</td>
         </tr>
         <tr>
             <td>
                 <p>Piutang</p>
             </td>
-            <td class="text-center">{{$TotalAR}}</td>
+            <td class="text-center">{{number_format($TotalAR)}}</td>
             <td>Utang bunga</td>
-            <td class="text-center">{{$TotalBunga}}</td>
+            <td class="text-center">{{number_format($TotalBunga)}}</td>
         </tr>
         <tr>
             <td>
                 <p>Sewa dibayar muka</p>
             </td>
-            <td class="text-center">{{$TotalPurcahse}}</td>
+            <td class="text-center">{{number_format($TotalPurcahse)}}</td>
             <td>Utang Bank</td>
-            <td class="text-center">{{$TotalBank}}
+            <td class="text-center">{{number_format($TotalBank)}}
             </td>
         </tr>
         <tr>
             <td>
                 <p>Asuransi dibayar dimuka</p>
             </td>
-            <td class="text-center">{{$prepaid_rent_total}}</td>
+            <td class="text-center">{{number_format($prepaid_rent_total)}}</td>
             <td>Modal</td>
-            <td class="text-center">{{$TotalCapital}}</td>
+            <td class="text-center">{{number_format($TotalCapital)}}</td>
         </tr>
         <tr>
             <td>
                 <p>Perlengkapan</p>
             </td>
-            <td class="text-center">{{$total_supplies}}</td>
+            <td class="text-center">{{number_format($total_supplies)}}</td>
             <td>Laba ditahan</td>
-            <td class="text-center">{{$retained_earn_total}}</td>
+            <td class="text-center">{{number_format($retained_earn_total)}}</td>
         </tr>
         <tr>
             <td>
                 <p>Kendaraan </p>
             </td>
-            <td class="text-center">{{$Totalvehicle}}</td>
+            <td class="text-center">{{number_format($Totalvehicle)}}</td>
             <td>Laba Berjalan</td>
-            <td class="text-center">{{$TotalPerubahan}}</td>
+            <td class="text-center">{{number_format($TotalPerubahan)}}</td>
         </tr>
         <tr>
             <td>
                 <p>Akun Depr. Kendaraan </p>
             </td>
-            <td class="text-center">{{$Totaldepvehicle}}</td>
+            <td class="text-center">{{number_format($Totaldepvehicle)}}</td>
             <td></td>
             <td></td>
         </tr>
@@ -123,7 +123,7 @@
             <td>
                 <p >Peralatan </p>
             </td>
-            <td class="text-center">{{$TotalEquipment}}</td>
+            <td class="text-center">{{number_format($TotalEquipment)}}</td>
             <td></td>
             <td></td>
         </tr>
@@ -131,7 +131,7 @@
             <td>
                 <p>Akun Depr. Perlatan </p>
             </td>
-            <td class="text-center">{{$TotalDepEquip}}</td>
+            <td class="text-center">{{number_format($TotalDepEquip)}}</td>
             <td></td>
             <td></td>
         </tr>
@@ -139,9 +139,9 @@
             <td>
                 <p>Jumlah</p>
             </td>
-            <td class="text-center">{{$TotalIn}}</td>
+            <td class="text-center">{{number_format($TotalIn)}}</td>
             <td>Jumlah</td>
-            <td class="text-center">{{$TotalOut}}</td>
+            <td class="text-center">{{number_format($TotalOut)}}</td>
         </tr>
     </table>
 </body>
